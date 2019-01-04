@@ -5,8 +5,9 @@ export default (users = [], action) => {
 
     switch (type) {
         case LOAD_ALL_USERS + SUCCESS:
-            return [...response.users]
-    }
+            return [...response.users];
+        default:
+            return users
 
-    return users
+    }
 }

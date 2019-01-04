@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Panel, Image} from 'react-bootstrap';
 
+import {pictureURL} from '../constants'
+
 class User extends Component {
 
     render() {
@@ -11,7 +13,7 @@ class User extends Component {
                     <Panel.Title componentClass="h3">{`${name} ${surname}`}</Panel.Title>
                 </Panel.Heading>
                 <Panel.Body>
-                    <Image src={`http://dev.frevend.com/json/images/u_${id}.png`} rounded />
+                    <Image src={pictureURL.replace('{{id}}', id)} rounded />
                 </Panel.Body>
                 <Panel.Body>
                     {desc}

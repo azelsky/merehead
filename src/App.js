@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
 import {Grid} from 'react-bootstrap'
-import { BrowserRouter as Router, Route, Redirect, Switch} from "react-router-dom";
+import { HashRouter as Router, Route, Redirect, Switch} from "react-router-dom";
 
 import store from './store';
 
-import UsersList from './components/UsersList'
+import FilterUsers from './components/Home'
 
 class App extends Component {
 
@@ -15,7 +15,7 @@ class App extends Component {
                 <Router>
                     <Grid>
                         <Switch>
-                            <Route path="/:currentPage" render={({match}) => <UsersList match ={match} />}/>
+                            <Route path="/:currentPage" render={({match}) => <FilterUsers match ={match} />}/>
                             <Redirect from="/" to="/1" />
                         </Switch>
                     </Grid>
