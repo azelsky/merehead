@@ -1,8 +1,8 @@
 import {SUCCESS} from '../constants';
 
 export default store => next => action => {
-    const {callAPI, type} = action
-    if (!callAPI) return next(action)
+    const {callAPI, type} = action;
+    if (!callAPI) return next(action);
 
     fetch(callAPI)
         .then(res => res.json())
