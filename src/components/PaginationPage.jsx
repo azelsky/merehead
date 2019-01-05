@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Row, Col} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 import Loader from 'react-loader-spinner';
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
@@ -10,7 +10,7 @@ import {loadAllUsers} from "../AC";
 import UsersList from './UsersList'
 import {LoaderWrapper} from './styled';
 import {PageNotFound} from './PageNotFound';
-import PaginationRouter from './PaginationRouter';
+import Pagination from './Pagination';
 
 class PaginationPage extends Component {
     constructor(props) {
@@ -49,7 +49,7 @@ class PaginationPage extends Component {
                     <UsersList activePage={activePage}/>
                 </Row>
                 <Row>
-                    <PaginationRouter
+                    <Pagination
                         activePage={activePage}
                         itemsCountPerPage={itemsCountPerPage}
                         totalItemsCount={users.length}

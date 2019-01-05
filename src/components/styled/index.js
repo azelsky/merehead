@@ -6,7 +6,7 @@ export const LoaderWrapper = styled.div`
     right: calc(50% - 40px);
 `;
 
-export const Pagination = styled.div`
+export const PaginationWrapper = styled.div`
     display: block;
 `;
 

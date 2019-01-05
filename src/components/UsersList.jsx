@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Col, Row} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 import PropTypes from "prop-types";
 
 import {itemsCountPerPage} from '../constants';

@@ -3,9 +3,9 @@ import {Link} from "react-router-dom";
 import {Col} from 'react-bootstrap';
 import PropTypes from "prop-types";
 
-import {Pagination, PaginationItem} from './styled';
+import {PaginationWrapper, PaginationItem} from './styled';
 
-class PaginationRouter extends Component {
+class Pagination extends Component {
 
     componentDidUpdate(prewProps) {
         if(prewProps.routePage !== this.props.routePage){
@@ -13,38 +13,38 @@ class PaginationRouter extends Component {
         }
     }
 
-    counterOfPage() {
-        const {itemsCountPerPage, totalItemsCount} = this.props;
+    buildPages() {
+        const {itemsCountPerPage, totalItemsCount, activePage} = this.props;
         let counter;
         if (totalItemsCount % itemsCountPerPage > 0) {
             counter = Math.ceil(totalItemsCount / itemsCountPerPage);
         } else counter = totalItemsCount / itemsCountPerPage;
         let pages = [];
-        for (let i = 1; i <= counter; i++){
-            pages.push(i);
+        for (let page = 1; page <= counter; page++){
+            pages.push(
+                <Link to={`/${page}`} key={page}>
+                    <PaginationItem active={activePage === page.toString()}>{`${page}`}</PaginationItem>
+                </Link>
+            );
         }
         return pages;
     }
 
     render() {
-        const pages = this.counterOfPage();
+        const pages = this.buildPages();
         return (
             <Col xs={12}>
-                <Pagination>
-                    {pages.map(page => (
-                        <Link to={`/${page}`} key={page}>
-                            <PaginationItem active={this.props.activePage === page.toString()}>{`${page}`}</PaginationItem>
-                        </Link>
-                    ))}
-                </Pagination>
+                <PaginationWrapper>
+                    {pages.map(page => page)}
+                </PaginationWrapper>
             </Col>
         );
     }
 }
 
-export default PaginationRouter;
+export default Pagination;
 
-PaginationRouter.propTypes = {
+Pagination.propTypes = {
     activePage: PropTypes.string.isRequired,
     itemsCountPerPage: PropTypes.number.isRequired,
     totalItemsCount: PropTypes.number.isRequired,
