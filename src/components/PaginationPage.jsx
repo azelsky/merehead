@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import Loader from 'react-loader-spinner';
 import {connect} from "react-redux";
+import PropTypes from "prop-types";
 
 import {itemsCountPerPage} from "../constants";
 import {loadAllUsers} from "../AC";
@@ -11,7 +12,7 @@ import {LoaderWrapper} from './styled';
 import {PageNotFound} from './PageNotFound';
 import PaginationRouter from './PaginationRouter';
 
-class Home extends Component {
+class PaginationPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -65,4 +66,9 @@ class Home extends Component {
 
 export default connect(state => ({
     users: state.users
-}), {loadAllUsers})(Home);
+}), {loadAllUsers})(PaginationPage);
+
+PaginationPage.propTypes = {
+    users: PropTypes.array.isRequired,
+    match: PropTypes.object.isRequired
+};

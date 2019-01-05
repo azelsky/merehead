@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
-import {Pagination, PaginationItem} from './styled'
+import {Pagination, PaginationItem} from './styled';
 
 class PaginationRouter extends Component {
 
@@ -39,3 +40,11 @@ class PaginationRouter extends Component {
 }
 
 export default PaginationRouter;
+
+PaginationRouter.propTypes = {
+    activePage: PropTypes.number.isRequired,
+    itemsCountPerPage: PropTypes.number.isRequired,
+    totalItemsCount: PropTypes.number.isRequired,
+    routePage: PropTypes.string,
+    handleRoute: PropTypes.func
+};

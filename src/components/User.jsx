@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Panel, Image} from 'react-bootstrap';
+import PropTypes from "prop-types";
 
 import {pictureURL} from '../constants'
 
@@ -24,3 +25,12 @@ class User extends Component {
 }
 
 export default User
+
+User.propTypes = {
+    user: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        surname: PropTypes.string.isRequired,
+        desc: PropTypes.string.isRequired
+    })
+};
