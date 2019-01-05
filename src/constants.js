@@ -6,7 +6,6 @@ export const baseURL = 'http://dev.frevend.com/';
 export const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 export const pictureURL = 'http://dev.frevend.com/json/images/u_{{id}}.png';
 
-export const pageRangeDisplayed = 5;
 export const itemsCountPerPage = 5;
 
 

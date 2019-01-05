@@ -1,32 +1,31 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'react-bootstrap';
-import Pagination from "react-js-pagination";
-import { Redirect } from "react-router-dom";
-
-import {itemsCountPerPage, pageRangeDisplayed} from "../constants";
+import Loader from 'react-loader-spinner';
 import {connect} from "react-redux";
+
+import {itemsCountPerPage} from "../constants";
 import {loadAllUsers} from "../AC";
 
 import UsersList from './UsersList'
-import Loader from 'react-loader-spinner';
 import {LoaderWrapper} from './styled';
-import {PageNotFound} from './PageNotFound'
+import {PageNotFound} from './PageNotFound';
+import PaginationRouter from './PaginationRouter';
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activePage: Number(this.props.match.params.currentPage) || 1
+            activePage: Number(this.props.match.params.currentPage)
         };
-        this.handlePageChange = this.handlePageChange.bind(this);
-    }
-
-    handlePageChange(pageNumber) {
-        this.setState({activePage: pageNumber});
+        this.handleRoute = this.handleRoute.bind(this);
     }
 
     componentDidMount() {
         this.props.loadAllUsers();
+    }
+
+    handleRoute(pageNumber) {
+        this.setState({activePage: pageNumber});
     }
 
     render() {
@@ -50,14 +49,13 @@ class Home extends Component {
                 </Row>
                 <Row>
                     <Col>
-                        <Pagination
+                        <PaginationRouter
                             activePage={activePage}
                             itemsCountPerPage={itemsCountPerPage}
                             totalItemsCount={users.length}
-                            pageRangeDisplayed={pageRangeDisplayed}
-                            onChange={this.handlePageChange}
+                            routePage={this.props.match.params.currentPage}
+                            handleRoute={this.handleRoute}
                         />
-                        {Number(match.params.currentPage) !== activePage && <Redirect to={`${activePage}`}/>}
                     </Col>
                 </Row>
             </div>
