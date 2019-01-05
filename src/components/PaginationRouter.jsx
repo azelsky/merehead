@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import {Col} from 'react-bootstrap';
 import PropTypes from "prop-types";
 
 import {Pagination, PaginationItem} from './styled';
@@ -28,13 +29,15 @@ class PaginationRouter extends Component {
     render() {
         const pages = this.counterOfPage();
         return (
-            <Pagination>
-                {pages.map(page => (
-                    <Link to={`/${page}`} key={page}>
-                        <PaginationItem active={this.props.activePage === page.toString()}>{`${page}`}</PaginationItem>
-                    </Link>
-                ))}
-            </Pagination>
+            <Col xs={12}>
+                <Pagination>
+                    {pages.map(page => (
+                        <Link to={`/${page}`} key={page}>
+                            <PaginationItem active={this.props.activePage === page.toString()}>{`${page}`}</PaginationItem>
+                        </Link>
+                    ))}
+                </Pagination>
+            </Col>
         );
     }
 }

@@ -49,15 +49,13 @@ class PaginationPage extends Component {
                     <UsersList activePage={activePage}/>
                 </Row>
                 <Row>
-                    <Col>
-                        <PaginationRouter
-                            activePage={activePage}
-                            itemsCountPerPage={itemsCountPerPage}
-                            totalItemsCount={users.length}
-                            routePage={this.props.match.params.currentPage}
-                            handleRoute={this.handleRoute}
-                        />
-                    </Col>
+                    <PaginationRouter
+                        activePage={activePage}
+                        itemsCountPerPage={itemsCountPerPage}
+                        totalItemsCount={users.length}
+                        routePage={this.props.match.params.currentPage}
+                        handleRoute={this.handleRoute}
+                    />
                 </Row>
             </div>
         );

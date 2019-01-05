@@ -12,11 +12,9 @@ class UsersList extends Component {
     render() {
         const { users } = this.props;
         return (
-            <Row>
-                <Col xs={12}>
-                    {users.map(user => <User key={user.id} user={user}/>)}
-                </Col>
-            </Row>
+            <Col xs={12}>
+                {users.map(user => <User key={user.id} user={user}/>)}
+            </Col>
         );
     }
 }
