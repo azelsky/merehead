@@ -16,7 +16,7 @@ class PaginationPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activePage: Number(this.props.match.params.currentPage)
+            activePage: this.props.match.params.currentPage
         };
         this.handleRoute = this.handleRoute.bind(this);
     }

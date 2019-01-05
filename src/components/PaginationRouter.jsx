@@ -8,7 +8,7 @@ class PaginationRouter extends Component {
 
     componentDidUpdate(prewProps) {
         if(prewProps.routePage !== this.props.routePage){
-            this.props.handleRoute(Number(this.props.routePage));
+            this.props.handleRoute(this.props.routePage);
         }
     }
 
@@ -19,7 +19,7 @@ class PaginationRouter extends Component {
             counter = Math.ceil(totalItemsCount / itemsCountPerPage);
         } else counter = totalItemsCount / itemsCountPerPage;
         let pages = [];
-        for (let i = 1; i<= counter; i++){
+        for (let i = 1; i <= counter; i++){
             pages.push(i);
         }
         return pages;
@@ -31,7 +31,7 @@ class PaginationRouter extends Component {
             <Pagination>
                 {pages.map(page => (
                     <Link to={`/${page}`} key={page}>
-                        <PaginationItem active={this.props.activePage === page}>{`${page}`}</PaginationItem>
+                        <PaginationItem active={this.props.activePage === page.toString()}>{`${page}`}</PaginationItem>
                     </Link>
                 ))}
             </Pagination>
@@ -42,7 +42,7 @@ class PaginationRouter extends Component {
 export default PaginationRouter;
 
 PaginationRouter.propTypes = {
-    activePage: PropTypes.number.isRequired,
+    activePage: PropTypes.string.isRequired,
     itemsCountPerPage: PropTypes.number.isRequired,
     totalItemsCount: PropTypes.number.isRequired,
     routePage: PropTypes.string,
